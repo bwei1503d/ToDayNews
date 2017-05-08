@@ -261,7 +261,7 @@ public class MainActivity extends SlidingFragmentActivity implements UMAuthListe
 
 
     //
-    //
+    // 分享的回调
     @Override
     public void onStart(SHARE_MEDIA share_media) {
 
