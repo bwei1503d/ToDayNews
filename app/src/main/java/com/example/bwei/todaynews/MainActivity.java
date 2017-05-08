@@ -280,6 +280,8 @@ public class MainActivity extends SlidingFragmentActivity implements UMAuthListe
     @Override
     public void onCancel(SHARE_MEDIA share_media, int i) {
 
+        //111
+
     }
 
 
