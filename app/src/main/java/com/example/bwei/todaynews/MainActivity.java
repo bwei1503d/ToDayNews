@@ -252,7 +252,7 @@ public class MainActivity extends SlidingFragmentActivity implements UMAuthListe
 
 
 
-    //
+    //   888
 
     public void share(SHARE_MEDIA share_media){
 //        UMShareAPI umShareAPI = UMShareAPI.get(getApplicationContext());
