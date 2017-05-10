@@ -2,6 +2,9 @@ package com.example.bwei.todaynews.bean;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.xutils.db.annotation.Column;
+import org.xutils.db.annotation.Table;
+
 import java.util.List;
 
 /**
@@ -211,6 +214,7 @@ public class TuijianBean {
         }
     }
 
+    @Table(name = "Tuijian")
     public static class DataBean {
         /**
          * read_count : 938921
@@ -288,79 +292,154 @@ public class TuijianBean {
          * ad_label : 广告
          */
 
+        @Column(name = "id" , isId = true)
+        private int id ;
+        @Column(name = "read_count")
         private int read_count;
+        @Column(name = "ban_comment")
         private int ban_comment;
+        @Column(name = "abstractX")
         @SerializedName("abstract")
         private String abstractX;
+        @Column(name = "ban_bury")
         private int ban_bury;
+        @Column(name = "has_video")
         private boolean has_video;
+        @Column(name = "article_type")
         private int article_type;
+        @Column(name = "tag")
         private String tag;
+        @Column(name = "has_m3u8_video")
         private int has_m3u8_video;
+        @Column(name = "keywords")
         private String keywords;
+        @Column(name = "rid")
         private String rid;
+        @Column(name = "label")
         private String label;
+        @Column(name = "show_portrait_article")
         private boolean show_portrait_article;
+        @Column(name = "user_verified")
         private int user_verified;
+        @Column(name = "aggr_type")
         private int aggr_type;
+        @Column(name = "cell_type")
         private int cell_type;
+        @Column(name = "article_sub_type")
         private int article_sub_type;
+        @Column(name = "bury_count")
         private int bury_count;
+        @Column(name = "title")
         private String title;
+        @Column(name = "ignore_web_transform")
         private int ignore_web_transform;
+        @Column(name = "source_icon_style")
         private int source_icon_style;
+        @Column(name = "tip")
         private int tip;
+        @Column(name = "hot")
         private int hot;
+        @Column(name = "share_url")
         private String share_url;
+        @Column(name = "has_mp4_video")
         private int has_mp4_video;
+        @Column(name = "source")
         private String source;
+        @Column(name = "comment_count")
         private int comment_count;
+        @Column(name = "article_url")
         private String article_url;
+        @Column(name = "share_count")
         private int share_count;
+        @Column(name = "publish_time")
         private int publish_time;
+        @Column(name = "has_image")
         private boolean has_image;
+        @Column(name = "cell_layout_style")
         private int cell_layout_style;
+        @Column(name = "tag_id")
         private long tag_id;
+        @Column(name = "video_style")
         private int video_style;
+        @Column(name = "verified_content")
         private String verified_content;
+        @Column(name = "display_url")
         private String display_url;
+        @Column(name = "is_stick")
         private boolean is_stick;
+        @Column(name = "item_id")
         private long item_id;
+        @Column(name = "is_subject")
         private boolean is_subject;
+        @Column(name = "show_portrait")
         private boolean show_portrait;
+        @Column(name = "repin_count")
         private int repin_count;
+        @Column(name = "cell_flag")
         private int cell_flag;
+        @Column(name = "source_open_url")
         private String source_open_url;
+        @Column(name = "level")
         private int level;
+        @Column(name = "like_count")
         private int like_count;
+        @Column(name = "digg_count")
         private int digg_count;
+        @Column(name = "behot_time")
         private int behot_time;
+        @Column(name = "cursor")
         private long cursor;
+        @Column(name = "url")
         private String url;
+        @Column(name = "preload_web")
         private int preload_web;
+        @Column(name = "user_repin")
         private int user_repin;
+        @Column(name = "label_style")
         private int label_style;
+        @Column(name = "item_version")
         private int item_version;
+        @Column(name = "group_id")
         private long group_id;
+        @Column(name = "middle_image")
         private MiddleImageBean middle_image;
+        @Column(name = "video_id")
         private String video_id;
+        @Column(name = "media_name")
         private String media_name;
+        @Column(name = "video_detail_info")
         private VideoDetailInfoBean video_detail_info;
+        @Column(name = "video_duration")
         private int video_duration;
+        @Column(name = "group_flags")
         private int group_flags;
+        @Column(name = "user_info")
         private UserInfoBean user_info;
+        @Column(name = "media_info")
         private MediaInfoBean media_info;
+        @Column(name = "gallary_image_count")
         private int gallary_image_count;
+        @Column(name = "log_extra")
         private String log_extra;
+        @Column(name = "display_info")
         private String display_info;
+        @Column(name = "expire_seconds")
         private int expire_seconds;
+        @Column(name = "ad_id")
         private long ad_id;
+        @Column(name = "natant_level")
         private int natant_level;
+        @Column(name = "article_alt_url")
         private String article_alt_url;
+        @Column(name = "ad_label")
         private String ad_label;
+        @Column(name = "image_list")
         private List<?> image_list;
+        @Column(name = "filter_words")
         private List<?> filter_words;
+        @Column(name = "action_list")
         private List<ActionListBean> action_list;
+        @Column(name = "large_image_list")
         private List<?> large_image_list;
 
         public int getRead_count() {
@@ -386,6 +465,7 @@ public class TuijianBean {
         public void setAbstractX(String abstractX) {
             this.abstractX = abstractX;
         }
+
 
         public int getBan_bury() {
             return ban_bury;

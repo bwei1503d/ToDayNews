@@ -50,6 +50,7 @@ public class MenuRightFragment extends BaseFragment implements View.OnClickListe
         imageViewtencent.setOnClickListener(this);
 
 
+
     }
 
     @Override

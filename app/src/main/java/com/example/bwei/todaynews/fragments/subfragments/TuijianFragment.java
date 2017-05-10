@@ -5,11 +5,14 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ListView;
 
 import com.bwei.springview.container.DefaultFooter;
 import com.bwei.springview.container.DefaultHeader;
 import com.bwei.springview.widget.SpringView;
+import com.example.bwei.todaynews.IApplication;
+import com.example.bwei.todaynews.MainActivity;
 import com.example.bwei.todaynews.R;
 import com.example.bwei.todaynews.adapter.NewsAdapter;
 import com.example.bwei.todaynews.base.BaseFragment;
@@ -18,6 +21,10 @@ import com.example.bwei.todaynews.constants.Urls;
 import com.example.bwei.todaynews.task.IAsyncTask;
 import com.example.bwei.todaynews.task.ResponseListener;
 import com.google.gson.Gson;
+
+import org.xutils.DbManager;
+import org.xutils.ex.DbException;
+import org.xutils.x;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -47,6 +54,8 @@ public class TuijianFragment extends BaseFragment implements SpringView.OnFreshL
             type = getArguments().getInt("pos");
         }
         View view = inflater.inflate(R.layout.tuijian_fragment,container,false);
+
+
         initView(view);
         return view;
     }
@@ -101,11 +110,25 @@ public class TuijianFragment extends BaseFragment implements SpringView.OnFreshL
     public void onSuccess(String string) {
 
 
-//        Gson gson = new Gson();
-//        TuijianBean bean = gson.fromJson(string, TuijianBean.class);
-//
-//        list.addAll(bean.getData());
-//        adapter.notifyDataSetChanged();
+        Gson gson = new Gson();
+        TuijianBean bean = gson.fromJson(string, TuijianBean.class);
+
+        list.addAll(bean.getData());
+        adapter.notifyDataSetChanged();
+
+        MainActivity mainActivity = (MainActivity) getActivity() ;
+        IApplication application = (IApplication) mainActivity.getApplication() ;
+        DbManager dbManager = x.getDb(application.getDaoConfig());
+
+        com.example.bwei.todaynews.db.DbManager.getInstance().save(dbManager,bean.getData());
+
+        try {
+            List<TuijianBean.DataBean> lists =  dbManager.findAll(TuijianBean.DataBean.class);
+            System.out.println("lists = " + lists);
+
+        } catch (DbException e) {
+            e.printStackTrace();
+        }
 
     }
 

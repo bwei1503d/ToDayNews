@@ -47,13 +47,14 @@ public class MenuLeftFragment extends BaseFragment implements View.OnClickListen
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
+                // isChecked true false
                 System.out.println("isChecked = " + isChecked);
 //
                 boolean mode =  PreferencesUtils.getValueByKey(getContext(),Constants.isNightMode,isChecked);
                 setMode(isChecked);
-                EventBus.getDefault().post(new MainActivityEvent(mode));
+                EventBus.getDefault().post(new MainActivityEvent(isChecked));
 
-                setBackground(mode);
+                setBackground(isChecked);
 
             }
         });
@@ -70,6 +71,7 @@ public class MenuLeftFragment extends BaseFragment implements View.OnClickListen
 
 
     private void setBackground(boolean white){
+
         if(white){
             view.setBackgroundColor(Color.WHITE);
         } else {

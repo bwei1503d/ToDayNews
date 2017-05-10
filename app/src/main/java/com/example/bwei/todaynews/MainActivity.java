@@ -1,5 +1,7 @@
 package com.example.bwei.todaynews;
 
+import android.app.Activity;
+import android.app.admin.DevicePolicyManager;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
@@ -13,6 +15,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bwei.slidingmenu.SlidingMenu;
@@ -29,13 +32,16 @@ import com.example.bwei.todaynews.fragments.ShopFragment;
 import com.example.bwei.todaynews.other.CustomTextView;
 import com.example.bwei.todaynews.other.CustomViewActivity;
 import com.example.bwei.todaynews.other.ViewgroupActivity;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
+import com.umeng.socialize.UMShareConfig;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.xutils.x;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +58,7 @@ public class MainActivity extends SlidingFragmentActivity implements UMAuthListe
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        application = (IApplication)  getApplicationContext();
 
         initLeftRight();
         initFragment(savedInstanceState);
@@ -62,24 +69,24 @@ public class MainActivity extends SlidingFragmentActivity implements UMAuthListe
 
         initGrayBackgroud();
 
+        //如果当前页面 已经注册了  则不需要注册
         if(!EventBus.getDefault().isRegistered(this)){
             EventBus.getDefault().register(this);
         }
 
 
-//        startActivity(new Intent(this, com.example.bwei.todaynews.other.draggridview.MainActivity.class));
 
 
-        application = (IApplication)  getApplicationContext();
+
 
     }
 
 
 
 
-//    http://blog.csdn.net/lmj623565791/article/details/36677279
     private void initLeftRight(){
         Fragment leftFragment = new MenuLeftFragment();
+//        设置侧滑菜单的布局
         setBehindContentView(R.layout.left_menu_frame);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_leftmenu_id,leftFragment).commit();
@@ -180,10 +187,13 @@ public class MainActivity extends SlidingFragmentActivity implements UMAuthListe
     public void initGrayBackgroud() {
         windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
 
+//        应用程序窗口。 WindowManager.LayoutParams.TYPE_APPLICATION
+//        所有程序窗口的“基地”窗口，其他应用程序窗口都显示在它上面。
+//        普通应用功能程序窗口。token必须设置为Activity的token，以指出该窗口属谁。
+
+//        后面的view获得焦点
         layoutParams = new WindowManager.LayoutParams
-                (WindowManager.LayoutParams.TYPE_APPLICATION,
-                        WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE |
-                                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                (WindowManager.LayoutParams.TYPE_APPLICATION,WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE |WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                         PixelFormat.TRANSPARENT);
         view = new View(this);
 
@@ -195,6 +205,8 @@ public class MainActivity extends SlidingFragmentActivity implements UMAuthListe
     // 日 夜切换
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMainActivityEvent(MainActivityEvent event){
+        System.out.println("isChecked = " + event.isWhite());
+
         if(event.isWhite()){
             // 日
             windowManager.removeViewImmediate(view);
@@ -225,6 +237,8 @@ public class MainActivity extends SlidingFragmentActivity implements UMAuthListe
      * @param view
      */
     public void switchTextViewColor(ViewGroup view,boolean white) {
+//        getChildCount 获取ViewGroup下view的个数
+//        view.getChildAt(i) 根据下标获取对应的子view
         for (int i = 0; i < view.getChildCount(); i++) {
             if (view.getChildAt(i) instanceof ViewGroup) {
                 switchTextViewColor((ViewGroup) view.getChildAt(i),white);
@@ -256,6 +270,9 @@ public class MainActivity extends SlidingFragmentActivity implements UMAuthListe
 
     public void share(SHARE_MEDIA share_media){
 //        UMShareAPI umShareAPI = UMShareAPI.get(getApplicationContext());
+        UMShareConfig config = new UMShareConfig();
+        config.isNeedAuthOnGetUserInfo(true);
+        UMShareAPI.get(this).setShareConfig(config);
         application.umShareAPI.getPlatformInfo(this, share_media,this);
     }
 
@@ -275,11 +292,14 @@ public class MainActivity extends SlidingFragmentActivity implements UMAuthListe
     @Override
     public void onError(SHARE_MEDIA share_media, int i, Throwable throwable) {
 
+        System.out.println("share_media = " + share_media);
+        System.out.println("share_media =i " + i);
+
+
     }
 
     @Override
     public void onCancel(SHARE_MEDIA share_media, int i) {
-
         //111
 
     }
@@ -296,4 +316,7 @@ public class MainActivity extends SlidingFragmentActivity implements UMAuthListe
 
 
     }
+
+
+
 }

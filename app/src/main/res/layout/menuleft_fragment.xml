@@ -166,14 +166,15 @@
             android:layout_width="match_parent"
             style="@style/SwitchButtonStyle"
             android:id="@+id/switch_btn"
+            android:checked="true"
+            android:layout_height="match_parent"
             custom:kswTextOn="白天模式"
             custom:kswTextOff="夜间模式"
-            custom:kswThumbColor="#0000FF"
+            custom:kswThumbColor="#00FF00"
             custom:kswThumbRadius="10dp"
-            android:textColor="#000000"
-            custom:kswBackRadius="10dp"
-            android:checked="true"
-            android:layout_height="match_parent" />
+            android:textColor="@color/custom_text_state_color"
+            custom:kswBackColor="#999999"
+            custom:kswBackRadius="10dp"/>
 
 
 

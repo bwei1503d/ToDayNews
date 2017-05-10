@@ -12,12 +12,15 @@ import android.view.ViewGroup;
 import com.example.bwei.todaynews.R;
 import com.example.bwei.todaynews.adapter.IndexFragmentAdapter;
 import com.example.bwei.todaynews.base.BaseFragment;
+import com.example.bwei.todaynews.constants.Urls;
+import com.example.bwei.todaynews.task.IAsyncTask;
+import com.example.bwei.todaynews.task.ResponseListener;
 
 /**
  * Created by muhanxi on 17/4/30.
  */
 
-public class IndexFragment extends BaseFragment {
+public class IndexFragment extends BaseFragment  {
 
 
 
@@ -55,6 +58,8 @@ public class IndexFragment extends BaseFragment {
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
 
+
+
     }
 
 
@@ -74,6 +79,7 @@ public class IndexFragment extends BaseFragment {
 
     }
 
+    // 改变tablayout 字颜色 下标颜色
     private void setWhiteMode(){
         tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.title_color));
         tabLayout.setTabTextColors(getResources().getColor(R.color.iblack),getResources().getColor(R.color.title_color));
@@ -82,5 +88,6 @@ public class IndexFragment extends BaseFragment {
         tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.title_color));
         tabLayout.setTabTextColors(getResources().getColor(R.color.iblack),getResources().getColor(R.color.title_color));
     }
+
 
 }

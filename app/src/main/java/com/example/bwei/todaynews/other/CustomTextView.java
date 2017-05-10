@@ -93,7 +93,7 @@ public class CustomTextView extends TextView {
 //        MeasureSpec.AT_MOST wrap_content
         if (widthMode == MeasureSpec.EXACTLY)
         {
-            // match_parent  current size
+            // match_parent  currentsize
             width = widthSize;
         } else
         {
