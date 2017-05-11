@@ -13,7 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +34,9 @@ import com.example.bwei.todaynews.fragments.ShopFragment;
 import com.example.bwei.todaynews.other.CustomTextView;
 import com.example.bwei.todaynews.other.CustomViewActivity;
 import com.example.bwei.todaynews.other.ViewgroupActivity;
+import com.example.bwei.todaynews.services.PushIntentService;
+import com.example.bwei.todaynews.services.PushService;
+import com.igexin.sdk.PushManager;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
@@ -73,8 +78,6 @@ public class MainActivity extends SlidingFragmentActivity implements UMAuthListe
         if(!EventBus.getDefault().isRegistered(this)){
             EventBus.getDefault().register(this);
         }
-
-
 
 
 

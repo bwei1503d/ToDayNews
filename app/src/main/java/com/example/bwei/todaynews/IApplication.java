@@ -3,6 +3,9 @@ package com.example.bwei.todaynews;
 import android.app.Application;
 import android.os.Environment;
 
+import com.example.bwei.todaynews.services.PushIntentService;
+import com.example.bwei.todaynews.services.PushService;
+import com.igexin.sdk.PushManager;
 import com.umeng.socialize.Config;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
@@ -36,6 +39,11 @@ public class IApplication extends Application {
 
 
         getDaoConfig();
+
+
+        PushManager.getInstance().initialize(this, PushService.class);
+
+        PushManager.getInstance().registerPushIntentService(this, PushIntentService.class);
 
     }
 
