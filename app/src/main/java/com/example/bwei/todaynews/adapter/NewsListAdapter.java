@@ -1,6 +1,7 @@
 package com.example.bwei.todaynews.adapter;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -9,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.bwei.todaynews.R;
 import com.example.bwei.todaynews.bean.TuijianBean;
 import com.example.bwei.todaynews.bean.TuijianBean1;
@@ -93,22 +95,36 @@ public class NewsListAdapter extends BaseAdapter{
 			if(imgUrlList.size() == 3){
 				mHolder.right_image.setVisibility(View.GONE);
 				mHolder.item_image_layout.setVisibility(View.VISIBLE);
-				x.image().bind(mHolder.item_image_0,imgUrlList.get(0).getUrl());
-				x.image().bind(mHolder.item_image_1,imgUrlList.get(1).getUrl());
-				x.image().bind(mHolder.item_image_2,imgUrlList.get(2).getUrl());
-				//imageLoader.displayImage(imgUrlList.get(0).getUrl(), mHolder.item_image_0);
-				//imageLoader.displayImage(imgUrlList.get(1).getUrl(), mHolder.item_image_1);
-				//imageLoader.displayImage(imgUrlList.get(2).getUrl(), mHolder.item_image_2);
+				final String tag1 = (String) mHolder.item_image_0.getTag(R.id.imageloader_uri);
+				final String tag2 = (String) mHolder.item_image_1.getTag(R.id.imageloader_uri);
+				final String tag3 = (String) mHolder.item_image_2.getTag(R.id.imageloader_uri);
+
+				loadImage(imgUrlList.get(0).getUrl(),mHolder.item_image_0,tag1);
+				loadImage(imgUrlList.get(1).getUrl(),mHolder.item_image_1,tag2);
+				loadImage(imgUrlList.get(2).getUrl(),mHolder.item_image_2,tag3);
+
 			}
 		}else if (newsList.get(position).getMiddle_image()!=null){
 			mHolder.right_image.setVisibility(View.VISIBLE);
 			mHolder.item_image_layout.setVisibility(View.GONE);
-			x.image().bind(mHolder.right_image,newsList.get(position).getMiddle_image().getUrl());
+			final String tag = (String) mHolder.right_image.getTag(R.id.imageloader_uri);
 
-			//imageLoader.displayImage(newsList.get(position).getMiddle_image().getUrl(), mHolder.right_image);
+			loadImage(newsList.get(position).getMiddle_image().getUrl(),mHolder.right_image,tag);
 
 		}
 		return view;
+	}
+
+
+	private void loadImage(String path,ImageView imageView,String tag){
+//		if(!path.equals(tag)){
+			imageView.setTag(R.id.imageloader_uri,path);
+			Glide.with(mcontext).load(path).placeholder(R.drawable.ic_launcher).error(R.drawable.ic_launcher).into(imageView);
+
+//		}
+		
+
+
 	}
 
 	static class ViewHolder {

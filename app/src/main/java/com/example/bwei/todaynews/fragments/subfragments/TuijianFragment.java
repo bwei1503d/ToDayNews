@@ -67,6 +67,7 @@ public class TuijianFragment extends BaseFragment implements SpringView.OnFreshL
         listView = (ListView) view.findViewById(R.id.tuijian_listview);
 
         springView = (SpringView) view.findViewById(R.id.tuijian_springview);
+        springView.setType(SpringView.Type.FOLLOW);
 
         springView.setHeader(new DefaultHeader(getContext()));
         springView.setFooter(new DefaultFooter(getContext()));
