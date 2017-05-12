@@ -117,7 +117,7 @@ public class TuijianFragment extends BaseFragment implements SpringView.OnFreshL
 
         list.addAll(bean.getData());
         adapter.notifyDataSetChanged();
-
+/*
         MainActivity mainActivity = (MainActivity) getActivity() ;
         IApplication application = (IApplication) mainActivity.getApplication() ;
         DbManager dbManager = x.getDb(application.getDaoConfig());
@@ -130,7 +130,7 @@ public class TuijianFragment extends BaseFragment implements SpringView.OnFreshL
 
         } catch (DbException e) {
             e.printStackTrace();
-        }
+        }*/
 
     }
 

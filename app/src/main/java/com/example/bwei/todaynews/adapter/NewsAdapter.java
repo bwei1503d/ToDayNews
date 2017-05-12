@@ -7,6 +7,7 @@ import java.util.zip.Inflater;
 
 import com.example.bwei.todaynews.R;
 import com.example.bwei.todaynews.bean.TuijianBean;
+import com.example.bwei.todaynews.bean.TuijianBean1;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -30,12 +31,12 @@ import android.widget.TextView;
 import android.widget.AbsListView.OnScrollListener;
 
 public class NewsAdapter extends BaseAdapter{
-	List<TuijianBean.DataBean> newsList;
+	List<TuijianBean1.DataBean> newsList;
 	Activity activity;
 	LayoutInflater inflater = null;
 	/** 弹出的更多选择框  */
 	private PopupWindow popupWindow;
-	public NewsAdapter(Activity activity, List<TuijianBean.DataBean> newsList) {
+	public NewsAdapter(Activity activity, List<TuijianBean1.DataBean> newsList) {
 		this.activity = activity;
 		this.newsList = newsList;
 		inflater = LayoutInflater.from(activity);
@@ -71,7 +72,7 @@ public class NewsAdapter extends BaseAdapter{
 	}
 
 	@Override
-	public TuijianBean.DataBean getItem(int position) {
+	public TuijianBean1.DataBean getItem(int position) {
 		if (newsList != null && newsList.size() != 0) {
 			return newsList.get(position);
 		}
