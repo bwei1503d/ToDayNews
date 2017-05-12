@@ -10,18 +10,20 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:layout_weight="3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
             android:padding="10dp">
 
             <TextView
                 android:id="@+id/item_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal|center_vertical"
                 android:text="习近平十个比喻描绘“一带一路”蓝图"
-                android:textSize="18sp"
+                android:textSize="15sp"
                 android:textColor="@color/iblack"
                 android:textStyle="bold" />
 
@@ -37,7 +39,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/iblack"
-                    android:text="置顶" />
+                    android:text="置顶"
+                    android:textSize="12sp"/>
 
                 <TextView
                     android:id="@+id/item_media_name"
@@ -45,7 +48,7 @@
                     android:layout_height="wrap_content"
                     android:text="  央视新闻网"
                     android:textColor="@color/iblack"
-                    android:textSize="12sp" />
+                    android:textSize="10sp" />
 
                 <TextView
                     android:id="@+id/item_comment_count"
@@ -53,14 +56,16 @@
                     android:layout_height="wrap_content"
                     android:text="  评论"
                     android:textColor="@color/iblack"
-                    android:textSize="12sp" />
+                    android:textSize="10sp" />
             </LinearLayout>
+
         </LinearLayout>
+
         <ImageView
             android:id="@+id/item_middle_image"
-            android:layout_weight="3"
             android:layout_width="120dp"
-            android:layout_height="120dp" />
+            android:layout_height="100dp"
+            android:padding="5dp"/>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/item_image_layout"
@@ -73,21 +78,29 @@
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:src="@mipmap/ic_launcher" />
 
         <ImageView
             android:id="@+id/item_image02"
             android:layout_weight="1"
-
+            android:padding="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/ic_launcher" />
 
         <ImageView
+            android:padding="5dp"
             android:id="@+id/item_image03"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/ic_launcher" />
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.7dp"
+        android:background="#cccccc"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
 </LinearLayout>
