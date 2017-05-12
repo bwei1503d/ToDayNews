@@ -65,7 +65,6 @@ public class NewsListAdapter extends BaseAdapter{
 		if (view == null) {
 			view = View.inflate(mcontext, R.layout.list_news_item, null);
 			mHolder = new ViewHolder();
-
 			mHolder.item_title = (TextView) view.findViewById(R.id.item_title);
 			mHolder.item_lable = (TextView) view.findViewById(R.id.item_lable);
 			mHolder.item_media_name = (TextView) view.findViewById(R.id.item_media_name);
