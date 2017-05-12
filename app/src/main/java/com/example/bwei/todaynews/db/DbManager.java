@@ -1,6 +1,7 @@
 package com.example.bwei.todaynews.db;
 
 import com.example.bwei.todaynews.bean.TuijianBean;
+import com.example.bwei.todaynews.bean.TuijianBean1;
 
 import org.xutils.ex.DbException;
 
@@ -26,7 +27,7 @@ public class DbManager {
     }
 
 
-    public void save(org.xutils.DbManager dbManager, List<TuijianBean.DataBean> list){
+    public void save(org.xutils.DbManager dbManager, List<TuijianBean1.DataBean> list){
 
         try {
             dbManager.save(list);

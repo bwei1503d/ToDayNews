@@ -9,12 +9,12 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.bwei.todaynews.R;
 import com.example.bwei.todaynews.bean.TuijianBean;
 import com.example.bwei.todaynews.bean.TuijianBean1;
 
 import java.util.List;
 
-import static com.igexin.push.core.g.R;
 
 
 public class NewsListAdapter extends BaseAdapter{
@@ -63,7 +63,6 @@ public class NewsListAdapter extends BaseAdapter{
 		if (view == null) {
 			view = View.inflate(mcontext,R.layout.list_news_item, null);
 			mHolder = new ViewHolder();
-
 			mHolder.item_title = (TextView) view.findViewById(R.id.item_title);
 			mHolder.item_lable = (TextView) view.findViewById(R.id.item_lable);
 			mHolder.item_media_name = (TextView) view.findViewById(R.id.item_media_name);
