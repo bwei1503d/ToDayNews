@@ -15,8 +15,10 @@ import com.example.bwei.todaynews.IApplication;
 import com.example.bwei.todaynews.MainActivity;
 import com.example.bwei.todaynews.R;
 import com.example.bwei.todaynews.adapter.NewsAdapter;
+import com.example.bwei.todaynews.adapter.NewsListAdapter;
 import com.example.bwei.todaynews.base.BaseFragment;
 import com.example.bwei.todaynews.bean.TuijianBean;
+import com.example.bwei.todaynews.bean.TuijianBean1;
 import com.example.bwei.todaynews.constants.Urls;
 import com.example.bwei.todaynews.task.IAsyncTask;
 import com.example.bwei.todaynews.task.ResponseListener;
@@ -40,9 +42,9 @@ public class TuijianFragment extends BaseFragment implements SpringView.OnFreshL
 
     private ListView listView;
     private SpringView springView;
-    private NewsAdapter adapter ;
+    private NewsListAdapter adapter ;
 
-    private List<TuijianBean.DataBean> list = new ArrayList<TuijianBean.DataBean>();
+    private List<TuijianBean1.DataBean> list = new ArrayList<TuijianBean1.DataBean>();
     //标志 那个页面 1 推荐
     private int type ;
 
@@ -69,7 +71,7 @@ public class TuijianFragment extends BaseFragment implements SpringView.OnFreshL
         springView.setHeader(new DefaultHeader(getContext()));
         springView.setFooter(new DefaultFooter(getContext()));
 
-        adapter = new NewsAdapter(getActivity(),list);
+        adapter = new NewsListAdapter(getActivity(),list);
         listView.setAdapter(adapter);
 
         springView.setListener(this);
@@ -111,11 +113,11 @@ public class TuijianFragment extends BaseFragment implements SpringView.OnFreshL
 
 
         Gson gson = new Gson();
-        TuijianBean bean = gson.fromJson(string, TuijianBean.class);
+        TuijianBean1 bean = gson.fromJson(string, TuijianBean1.class);
 
         list.addAll(bean.getData());
         adapter.notifyDataSetChanged();
-
+/*
         MainActivity mainActivity = (MainActivity) getActivity() ;
         IApplication application = (IApplication) mainActivity.getApplication() ;
         DbManager dbManager = x.getDb(application.getDaoConfig());
@@ -128,7 +130,7 @@ public class TuijianFragment extends BaseFragment implements SpringView.OnFreshL
 
         } catch (DbException e) {
             e.printStackTrace();
-        }
+        }*/
 
     }
 

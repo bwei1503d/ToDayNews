@@ -9,12 +9,14 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.bwei.todaynews.R;
 import com.example.bwei.todaynews.bean.TuijianBean;
 import com.example.bwei.todaynews.bean.TuijianBean1;
 
+import org.xutils.x;
+
 import java.util.List;
 
-import static com.igexin.push.core.g.R;
 
 
 public class NewsListAdapter extends BaseAdapter{
@@ -61,7 +63,7 @@ public class NewsListAdapter extends BaseAdapter{
 		ViewHolder mHolder;
 		View view = convertView;
 		if (view == null) {
-			view = View.inflate(mcontext,R.layout.list_news_item, null);
+			view = View.inflate(mcontext, R.layout.list_news_item, null);
 			mHolder = new ViewHolder();
 
 			mHolder.item_title = (TextView) view.findViewById(R.id.item_title);
@@ -92,6 +94,9 @@ public class NewsListAdapter extends BaseAdapter{
 			if(imgUrlList.size() == 3){
 				mHolder.right_image.setVisibility(View.GONE);
 				mHolder.item_image_layout.setVisibility(View.VISIBLE);
+				x.image().bind(mHolder.item_image_0,imgUrlList.get(0).getUrl());
+				x.image().bind(mHolder.item_image_1,imgUrlList.get(1).getUrl());
+				x.image().bind(mHolder.item_image_2,imgUrlList.get(2).getUrl());
 				//imageLoader.displayImage(imgUrlList.get(0).getUrl(), mHolder.item_image_0);
 				//imageLoader.displayImage(imgUrlList.get(1).getUrl(), mHolder.item_image_1);
 				//imageLoader.displayImage(imgUrlList.get(2).getUrl(), mHolder.item_image_2);
@@ -99,6 +104,8 @@ public class NewsListAdapter extends BaseAdapter{
 		}else if (newsList.get(position).getMiddle_image()!=null){
 			mHolder.right_image.setVisibility(View.VISIBLE);
 			mHolder.item_image_layout.setVisibility(View.GONE);
+			x.image().bind(mHolder.right_image,newsList.get(position).getMiddle_image().getUrl());
+
 			//imageLoader.displayImage(newsList.get(position).getMiddle_image().getUrl(), mHolder.right_image);
 
 		}

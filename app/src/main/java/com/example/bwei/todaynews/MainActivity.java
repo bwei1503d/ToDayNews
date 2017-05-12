@@ -37,7 +37,6 @@ import com.example.bwei.todaynews.other.ViewgroupActivity;
 import com.example.bwei.todaynews.services.PushIntentService;
 import com.example.bwei.todaynews.services.PushService;
 import com.igexin.sdk.PushManager;
-import com.nostra13.universalimageloader.core.ImageLoader;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.UMShareConfig;
