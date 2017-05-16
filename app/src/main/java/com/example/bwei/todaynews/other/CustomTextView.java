@@ -6,12 +6,15 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.bwei.todaynews.R;
 
@@ -66,8 +69,9 @@ public class CustomTextView extends TextView {
         TypedArray typedArray =  context.obtainStyledAttributes(attrs, R.styleable.CustomTextView);
         mText = typedArray.getString(R.styleable.CustomTextView_customText);
         mTextColor = typedArray.getColor(R.styleable.CustomTextView_customTextColor, Color.BLACK);
+        //applyDimension 转化成标准尺寸 sp to px
         mTextSize = typedArray.getDimensionPixelSize(R.styleable.CustomTextView_customTextSize, (int) TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_SP, 16, getResources().getDisplayMetrics()));
+                TypedValue.COMPLEX_UNIT_SP, 17, getResources().getDisplayMetrics()));
         typedArray.recycle();
 
         mPaint = new Paint();
@@ -78,7 +82,8 @@ public class CustomTextView extends TextView {
 
     }
 
-
+//    http://blog.csdn.net/xmxkf/article/details/51468648
+//    http://blog.csdn.net/u014702653/article/details/51985821
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -99,7 +104,15 @@ public class CustomTextView extends TextView {
         {
             mPaint.setTextSize(mTextSize);
             mPaint.getTextBounds(mText, 0, mText.length(), mBound);
-            float textWidth = mBound.width();
+//            粗略的文字宽度计算
+            float textWidth1 = mBound.width();
+
+            // 精确计算文字宽度
+            float textWidth = mPaint.measureText(mText);
+
+            System.out.println("textWidth = " + textWidth + "  " + textWidth1);
+
+
             int desired = (int) (getPaddingLeft() + textWidth + getPaddingRight());
             width = desired;
         }
@@ -112,7 +125,15 @@ public class CustomTextView extends TextView {
         {
             mPaint.setTextSize(mTextSize);
             mPaint.getTextBounds(mText, 0, mText.length(), mBound);
-            float textHeight = mBound.height();
+            float textHeight1 = mBound.height();
+
+            Paint.FontMetrics fontMetrics = mPaint.getFontMetrics();
+
+            float textHeight = Math.abs(fontMetrics.bottom - fontMetrics.top);
+
+            System.out.println("textWidth textHeight = " + textHeight + "  " + textHeight1);
+
+
             int desired = (int) (getPaddingTop() + textHeight + getPaddingBottom());
             height = desired;
         }
@@ -122,17 +143,34 @@ public class CustomTextView extends TextView {
 
 
     @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        System.out.println("w = onSizeChanged " + w);
+    }
+
+    @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         System.out.println("widthMeasureSpec = onDraw" );
 
 
 
-        mPaint.setColor(Color.BLUE);
+        mPaint.setColor(Color.RED);
         canvas.drawRect(0,0,getMeasuredWidth(),getMeasuredHeight(),mPaint);
 
         mPaint.setColor(mTextColor);
-        canvas.drawText(mText, getWidth() / 2 - mBound.width() / 2, getHeight() / 2 + mBound.height() / 2, mPaint);
+
+        Paint.FontMetrics fm = mPaint.getFontMetrics();
+
+        //系统居中 方案一
+        float startY = getHeight() / 2 - fm.descent + (fm.bottom - fm.top) / 2;
+
+        //居中二
+//        float startY = getHeight() / 2 - fm.descent + (fm.descent - fm.ascent)/ 2;
+
+        canvas.drawText(mText, getWidth() / 2 - mBound.width() / 2, startY, mPaint);
+
+//        canvas.drawText(mText, getWidth() / 2 - mBound.width() / 2, getHeight() / 2 + mBound.height() / 2, mPaint);
     }
 
 

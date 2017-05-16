@@ -5,16 +5,13 @@
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-
-    <com.example.bwei.todaynews.other.CustomTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        custom:customText="@string/app_name"
-        custom:customTextColor="#000000"
-        custom:customTextSize="16sp"
-        android:id="@+id/c_tv"/>
-
-
+    <com.example.bwei.todaynews.other.CustomProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        custom:firstColor="@color/colorAccent"
+        custom:secondColor="#00FF00"
+        custom:circleWidth="10dp"
+        />
 
 
 </LinearLayout>

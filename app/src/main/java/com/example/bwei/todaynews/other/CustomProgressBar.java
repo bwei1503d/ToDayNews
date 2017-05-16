@@ -58,6 +58,11 @@ public class CustomProgressBar extends ProgressBar {
         typedArray.recycle();
 
 
+        for(int i=0;i<attrs.getAttributeCount();i++){
+            System.out.println("attrs = " + attrs.getAttributeName(i));
+            System.out.println("attrs = " + attrs.getAttributeValue(i));
+        }
+
         paint = new Paint();
         new Thread(new Runnable() {
             @Override
@@ -66,6 +71,7 @@ public class CustomProgressBar extends ProgressBar {
                 while (!stop) {
                     mProgress++ ;
 
+                    System.out.println("mProgress = " + mProgress);
                     if(mProgress == 360){
 
                         mProgress = 0 ;
@@ -74,8 +80,9 @@ public class CustomProgressBar extends ProgressBar {
                         secondColor = tempColor;
 
                     }
+                    //子线程 刷新UI
                     postInvalidate();
-//                    invalidate(); 区别
+//                    invalidate(); //区别
 
 
                     try {
@@ -126,7 +133,6 @@ public class CustomProgressBar extends ProgressBar {
     protected synchronized void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        System.out.println("onDraw = ");
 
         //获取圆心X坐标
         int center = getWidth() / 2 ;
@@ -153,7 +159,6 @@ public class CustomProgressBar extends ProgressBar {
         paint.setColor(secondColor);
         // 根据进度画圆弧
         canvas.drawArc(oval,-90,mProgress,false,paint);
-
 
 
 

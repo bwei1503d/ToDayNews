@@ -99,6 +99,7 @@ public class NewsListAdapter extends BaseAdapter{
 				final String tag2 = (String) mHolder.item_image_1.getTag(R.id.imageloader_uri);
 				final String tag3 = (String) mHolder.item_image_2.getTag(R.id.imageloader_uri);
 
+
 				loadImage(imgUrlList.get(0).getUrl(),mHolder.item_image_0,tag1);
 				loadImage(imgUrlList.get(1).getUrl(),mHolder.item_image_1,tag2);
 				loadImage(imgUrlList.get(2).getUrl(),mHolder.item_image_2,tag3);

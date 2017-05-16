@@ -2,8 +2,10 @@ package com.example.bwei.todaynews.other;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 /**
  * Created by muhanxi on 17/5/4.
@@ -47,6 +49,8 @@ public class CViewGroup extends ViewGroup {
      */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+
+        System.out.println("widthMeasureSpec =onMeasure " );
 //        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
 //        此ViewGroup上级容器为其推荐的宽和高，以及计算模式
@@ -83,8 +87,11 @@ public class CViewGroup extends ViewGroup {
 //        根据childView计算的出的宽和高，以及设置的margin计算容器的宽和高，主要用于容器是warp_content时
         for (int i = 0; i < cCount; i++)
         {
+//            getChildAt 获取对应的子view
             View childView = getChildAt(i);
+            // 获取子View 的宽度
             cWidth = childView.getMeasuredWidth();
+            // 获取子View 的高度
             cHeight = childView.getMeasuredHeight();
             cParams = (MarginLayoutParams) childView.getLayoutParams();
 
@@ -115,14 +122,18 @@ public class CViewGroup extends ViewGroup {
         height = Math.max(lHeight, rHeight);
 
 //        如果是wrap_content设置为我们计算的值
+
         setMeasuredDimension((widthMode == MeasureSpec.EXACTLY) ? widthSize
                 : width, (heightMode == MeasureSpec.EXACTLY) ? heightSize
                 : height);
 
     }
 
+    //设置子view 的绘制区域
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        System.out.println("widthMeasureSpec =onLayout " );
+
         int cCount = getChildCount();
         int cWidth = 0;
         int cHeight = 0;
@@ -167,4 +178,7 @@ public class CViewGroup extends ViewGroup {
             childView.layout(cl, ct, cr, cb);
         }
     }
+
+
+
 }

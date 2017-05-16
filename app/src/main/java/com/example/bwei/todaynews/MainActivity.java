@@ -33,7 +33,10 @@ import com.example.bwei.todaynews.fragments.MyTalkFragment;
 import com.example.bwei.todaynews.fragments.ShopFragment;
 import com.example.bwei.todaynews.other.CustomTextView;
 import com.example.bwei.todaynews.other.CustomViewActivity;
+import com.example.bwei.todaynews.other.EventActivity;
+import com.example.bwei.todaynews.other.ScaleActivity;
 import com.example.bwei.todaynews.other.ViewgroupActivity;
+import com.example.bwei.todaynews.other.ZoomImageView;
 import com.example.bwei.todaynews.services.PushIntentService;
 import com.example.bwei.todaynews.services.PushService;
 import com.igexin.sdk.PushManager;
@@ -79,6 +82,7 @@ public class MainActivity extends SlidingFragmentActivity implements UMAuthListe
         }
 
 
+        startActivity(new Intent(this,ViewgroupActivity.class));
 
 
     }
