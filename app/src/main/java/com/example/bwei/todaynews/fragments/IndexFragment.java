@@ -4,15 +4,18 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.bwei.todaynews.R;
 import com.example.bwei.todaynews.adapter.IndexFragmentAdapter;
 import com.example.bwei.todaynews.base.BaseFragment;
 import com.example.bwei.todaynews.constants.Urls;
+import com.example.bwei.todaynews.fragments.subfragments.ShipinFragment;
 import com.example.bwei.todaynews.task.IAsyncTask;
 import com.example.bwei.todaynews.task.ResponseListener;
 
@@ -23,6 +26,8 @@ import com.example.bwei.todaynews.task.ResponseListener;
 public class IndexFragment extends BaseFragment  {
 
 
+    private TextView textViewadd;
+    private TextView textViewsub;
 
     //推荐
     public static IndexFragment newInstance(int type) {
@@ -50,14 +55,46 @@ public class IndexFragment extends BaseFragment  {
 
         tabLayout = (TabLayout) view.findViewById(R.id.index_tablayout);
         viewPager = (ViewPager) view.findViewById(R.id.index_viewpager);
-        indexFragmentAdapter = new IndexFragmentAdapter(getActivity().getSupportFragmentManager());
+        indexFragmentAdapter = new IndexFragmentAdapter(getActivity().getSupportFragmentManager(),false);
         viewPager.setAdapter(indexFragmentAdapter);
 
         tabLayout.setupWithViewPager(viewPager);
         setWhiteMode();
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
+        textViewadd = (TextView) view.findViewById(R.id.text_add);
+        textViewsub = (TextView) view.findViewById(R.id.text_sub);
 
+        textViewadd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+//            TabLayout.Tab tab =  tabLayout.newTab();
+//
+//            tab.setText("添加");
+//                Fragment fragment =  new ShipinFragment();
+//                tab.setCustomView(fragment.getView());
+//
+//            tabLayout.addTab(tab,IndexFragmentAdapter.TITLE.length);
+//
+//                System.out.println("fragment = " + IndexFragmentAdapter.TITLE.length);
+                indexFragmentAdapter = new IndexFragmentAdapter(getActivity().getSupportFragmentManager(),true);
+                viewPager.setAdapter(indexFragmentAdapter);
+                tabLayout.setupWithViewPager(viewPager);
+
+            }
+        });
+        textViewsub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+//                tabLayout.removeTabAt(IndexFragmentAdapter.TITLE.length-1);
+//                System.out.println("fragment = " + IndexFragmentAdapter.TITLE.length);
+
+            }
+        });
 
 
     }

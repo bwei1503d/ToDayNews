@@ -23,6 +23,7 @@ import com.example.bwei.todaynews.constants.Urls;
 import com.example.bwei.todaynews.task.IAsyncTask;
 import com.example.bwei.todaynews.task.ResponseListener;
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 
 import org.xutils.DbManager;
 import org.xutils.ex.DbException;
@@ -113,11 +114,15 @@ public class TuijianFragment extends BaseFragment implements SpringView.OnFreshL
     public void onSuccess(String string) {
 
 
-        Gson gson = new Gson();
-        TuijianBean1 bean = gson.fromJson(string, TuijianBean1.class);
+        try {
+            Gson gson = new Gson();
+            TuijianBean1 bean = gson.fromJson(string, TuijianBean1.class);
 
-        list.addAll(bean.getData());
-        adapter.notifyDataSetChanged();
+            list.addAll(bean.getData());
+            adapter.notifyDataSetChanged();
+        } catch (JsonSyntaxException e) {
+            e.printStackTrace();
+        }
 /*
         MainActivity mainActivity = (MainActivity) getActivity() ;
         IApplication application = (IApplication) mainActivity.getApplication() ;

@@ -15,10 +15,13 @@ import com.example.bwei.todaynews.fragments.subfragments.TuijianFragment;
 
 public class IndexFragmentAdapter extends FragmentPagerAdapter {
 
-    public String [] TITLE = {"推荐","热点","本地","视频","社会","娱乐","科技","汽车","科技","汽车","体育","财经","军事","国际","段子","趣图","健康","美女"} ;
+    public  String [] TITLE = {"推荐","热点","本地","视频","社会","娱乐","科技","汽车","科技","汽车","体育","财经","军事","国际","段子","趣图","健康","美女"} ;
+    public  String [] TITLE1 = {"推荐","热点","本地","视频","社会","娱乐","科技"} ;
 
-    public IndexFragmentAdapter(FragmentManager fragmentManager){
+    boolean change = false ;
+    public IndexFragmentAdapter(FragmentManager fragmentManager,boolean change){
         super(fragmentManager);
+        this.change = change;
     }
 
     @Override
@@ -40,12 +43,12 @@ public class IndexFragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return TITLE.length;
+        return !change ? TITLE.length : TITLE1.length;
     }
 
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return TITLE[position] ;
+        return !change ? TITLE[position] : TITLE1[position] ;
     }
 }

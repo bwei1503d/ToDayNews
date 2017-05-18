@@ -3,6 +3,7 @@ package com.example.bwei.todaynews;
 import android.app.Application;
 import android.os.Environment;
 
+import com.example.bwei.todaynews.other.newsdrag.db.SQLHelper;
 import com.example.bwei.todaynews.services.PushIntentService;
 import com.example.bwei.todaynews.services.PushService;
 import com.igexin.sdk.PushManager;
@@ -25,12 +26,13 @@ import java.io.File;
 public class IApplication extends Application {
 
     public UMShareAPI umShareAPI ;
-
+    private static IApplication mAppApplication;
+    private SQLHelper sqlHelper;
     @Override
     public void onCreate() {
         super.onCreate();
         x.Ext.init(this);
-
+        mAppApplication = this ;
 
         umShareAPI = UMShareAPI.get(this);
         Config.DEBUG = true;
@@ -63,5 +65,28 @@ public class IApplication extends Application {
         }
         return daoConfig;
     }
+
+    /** 获取Application */
+    public static IApplication getApp() {
+        return mAppApplication;
+    }
+
+    /** 获取数据库Helper */
+    public SQLHelper getSQLHelper() {
+        if (sqlHelper == null)
+            sqlHelper = new SQLHelper(mAppApplication);
+        return sqlHelper;
+    }
+
+    /** 摧毁应用进程时候调用 */
+    public void onTerminate() {
+        if (sqlHelper != null)
+            sqlHelper.close();
+        super.onTerminate();
+    }
+
+    public void clearAppCache() {
+    }
+
 
 }

@@ -162,7 +162,10 @@
             android:process=":pushservice" />
 
         <activity android:name=".other.EventActivity" />
-        <activity android:name=".other.ScaleActivity"></activity>
+        <activity android:name=".other.ScaleActivity" />
+        <activity android:name=".other.newsdrag.ChannelActivity" />
+        <activity android:name=".other.anim.AnimActivity" />
+        <activity android:name=".other.event.EventActivity"></activity>
     </application>
 
 </manifest>
