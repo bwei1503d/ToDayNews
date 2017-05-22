@@ -1,6 +1,10 @@
 package com.example.bwei.todaynews.adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.speech.tts.TextToSpeech;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -12,8 +16,10 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.bwei.todaynews.MainActivity;
 import com.example.bwei.todaynews.R;
 import com.example.bwei.todaynews.bean.TuijianBean;
 import com.example.bwei.todaynews.bean.TuijianBean1;
@@ -123,13 +129,30 @@ public class NewsListAdapter extends BaseAdapter{
 			public void onClick(View v) {
 
 
+
+
+				final int[] location1 = new int[2];
+				v.getLocationOnScreen(location1);
+
+//				Rect rect = new Rect();
+//				Paint paint  = new Paint();
+
 				View view1 = LayoutInflater.from(mcontext).inflate(R.layout.pop,null,false);
 				PopupWindow popupWindow = new PopupWindow(view1, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
 				popupWindow.setFocusable(true);
-//				popupWindow.showAsDropDown(mHolder.textViewDel);
+				// 出现在view 下方
+				popupWindow.showAsDropDown(mHolder.textViewDel);
 
-				popupWindow.showAtLocation(mHolder.textViewDel, Gravity.LEFT,100,0);
+				float width =  mcontext.getResources().getDimension(R.dimen.pop_width);
+				// 出现在  x y 指定的位置
+//				popupWindow.showAtLocation(v, Gravity.NO_GRAVITY,(int) (location1[0]- width) ,location1[1]);
+				popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+					@Override
+					public void onDismiss() {
+
+					}
+				});
 
 
 			}

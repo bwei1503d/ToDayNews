@@ -98,6 +98,7 @@ public class DragGrid extends GridView {
     }
 
     public void init(Context context){
+        //震动
         mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
         //将布局文件中设置的间距dip转为px
         mHorizontalSpacing = DataTools.dip2px(context, mHorizontalSpacing);
@@ -169,6 +170,7 @@ public class DragGrid extends GridView {
 //			windowParams.y = rawy - itemHeight / 2;
             windowParams.x = rawx - win_view_x;
             windowParams.y = rawy - win_view_y;
+            //updateViewLayout  更新当前 dragImageView 位置
             windowManager.updateViewLayout(dragImageView, windowParams);
         }
     }
@@ -230,6 +232,7 @@ public class DragGrid extends GridView {
                     dragItemView = dragViewGroup;
                     dragViewGroup.destroyDrawingCache();
                     dragViewGroup.setDrawingCacheEnabled(true);
+//                    dragViewGroup.getDrawingCache 吧当前View 转化成Bitmap 对象
                     Bitmap dragBitmap = Bitmap.createBitmap(dragViewGroup.getDrawingCache());
                     mVibrator.vibrate(50);//设置震动时间
                     startDrag(dragBitmap, (int)ev.getRawX(),  (int)ev.getRawY());
@@ -237,7 +240,7 @@ public class DragGrid extends GridView {
                     dragViewGroup.setVisibility(View.INVISIBLE);
                     isMoving = false;
 //                    子View的所有父ViewGroup会跳过onInterceptTouchEvent回调
-                    requestDisallowInterceptTouchEvent(true);
+//                    requestDisallowInterceptTouchEvent(true);
                     return true;
                 }
                 return false;
@@ -312,6 +315,7 @@ public class DragGrid extends GridView {
     /** 移动的时候触发*/
     public void OnMove(int x, int y) {
         // 拖动的VIEW下方的POSTION
+        //传一个point 返回对应的position
         int dPosition = pointToPosition(x, y);
         // 判断下方的POSTION是否是最开始2个不能拖动的
         if (dPosition > 1) {
@@ -319,10 +323,11 @@ public class DragGrid extends GridView {
                 return;
             }
             dropPosition = dPosition;
+            // 第一次点击的postion startPosition
             if (dragPosition != startPosition){
                 dragPosition = startPosition;
             }
-            int movecount;
+            int movecount;//需要移动的个数
             //拖动的=开始拖的，并且 拖动的 不等于放下的
             if ((dragPosition == startPosition) || (dragPosition != dropPosition)){
                 //移需要移动的动ITEM数量

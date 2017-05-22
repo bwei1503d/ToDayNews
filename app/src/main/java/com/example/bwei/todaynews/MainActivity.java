@@ -39,6 +39,7 @@ import com.example.bwei.todaynews.other.ViewgroupActivity;
 import com.example.bwei.todaynews.other.ZoomImageView;
 import com.example.bwei.todaynews.other.anim.AnimActivity;
 import com.example.bwei.todaynews.other.newsdrag.ChannelActivity;
+import com.example.bwei.todaynews.other.zoom.ZoomActivity;
 import com.example.bwei.todaynews.services.PushIntentService;
 import com.example.bwei.todaynews.services.PushService;
 import com.igexin.sdk.PushManager;
@@ -76,6 +77,8 @@ public class MainActivity extends SlidingFragmentActivity implements UMAuthListe
         switchFragment(0);
 
 
+        
+
         initGrayBackgroud();
 
         //如果当前页面 已经注册了  则不需要注册
@@ -84,7 +87,7 @@ public class MainActivity extends SlidingFragmentActivity implements UMAuthListe
         }
 
 
-        startActivity(new Intent(this, ChannelActivity.class));
+        startActivity(new Intent(this, ZoomActivity.class));
 
 
     }

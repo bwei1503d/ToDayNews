@@ -1,6 +1,7 @@
 package com.example.bwei.todaynews.fragments.subfragments;
 
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +33,7 @@ import org.xutils.x;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by muhanxi on 17/4/30.
@@ -80,6 +82,9 @@ public class TuijianFragment extends BaseFragment implements SpringView.OnFreshL
 
 
         getData();
+
+
+
     }
 
 

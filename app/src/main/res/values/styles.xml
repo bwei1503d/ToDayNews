@@ -37,7 +37,9 @@
         <item name="android:paddingBottom">10dp</item>
     </style>
 
-
+    <style name="detail_activity">
+        <item name="android:background">@color/detail_activity_bg_color</item>
+    </style>
 
 
 

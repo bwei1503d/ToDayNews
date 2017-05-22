@@ -23,16 +23,19 @@ public class OuterLayout extends LinearLayout {
         super(context, attrs, defStyleAttr);
     }
 
+    // 转发
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         System.out.println("OuterLayout ev = dispatchTouchEvent " );
         return super.dispatchTouchEvent(ev);
     }
 
+    //拦截
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         System.out.println("OuterLayout ev = onInterceptTouchEvent " );
         return super.onInterceptTouchEvent(ev);
+//        return true ;
     }
 
     @Override

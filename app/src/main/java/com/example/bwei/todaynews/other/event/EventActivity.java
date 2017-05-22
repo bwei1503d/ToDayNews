@@ -15,18 +15,18 @@ public class EventActivity extends Activity {
     }
 
 
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        System.out.println("EventActivity ev = dispatchTouchEvent " );
-        return super.dispatchTouchEvent(ev);
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        System.out.println("EventActivity ev = onTouchEvent " );
-//        getParent().requestDisallowInterceptTouchEvent(false);
-        return super.onTouchEvent(event);
-//        return false ;
-//        return true;
-    }
+//    @Override
+//    public boolean dispatchTouchEvent(MotionEvent ev) {
+//        System.out.println("EventActivity ev = dispatchTouchEvent " );
+//        return super.dispatchTouchEvent(ev);
+//    }
+//
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        System.out.println("EventActivity ev = onTouchEvent " );
+////        getParent().requestDisallowInterceptTouchEvent(false);
+//        return super.onTouchEvent(event);
+////        return false ;
+////        return true;
+//    }
 }

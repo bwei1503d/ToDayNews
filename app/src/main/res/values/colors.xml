@@ -45,4 +45,8 @@
     <color name="subscribe_bg">#fff5f5f5</color>
     <color name="subscribe_seperate_line">#ffcdcdcd</color>
 
+    <color name="detail_activity_bg_color">#fff6f7f7</color>
+    <color name="detail_activity_bg_color_night">#ff1a1a1a</color>
+    <color name="detail_divider_day">#ffb4b4b4</color>
+
 </resources>

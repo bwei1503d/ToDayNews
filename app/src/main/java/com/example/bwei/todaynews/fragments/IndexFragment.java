@@ -2,6 +2,7 @@ package com.example.bwei.todaynews.fragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -10,14 +11,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.bwei.todaynews.R;
 import com.example.bwei.todaynews.adapter.IndexFragmentAdapter;
 import com.example.bwei.todaynews.base.BaseFragment;
 import com.example.bwei.todaynews.constants.Urls;
 import com.example.bwei.todaynews.fragments.subfragments.ShipinFragment;
+import com.example.bwei.todaynews.other.tabview.ColorTrackTabLayout;
 import com.example.bwei.todaynews.task.IAsyncTask;
 import com.example.bwei.todaynews.task.ResponseListener;
+
+import java.util.Locale;
 
 /**
  * Created by muhanxi on 17/4/30.
@@ -50,6 +55,7 @@ public class IndexFragment extends BaseFragment  {
         initView(view);
         return view;
     }
+    private TextToSpeech textToSpeech;
 
     private void initView(View view) {
 
@@ -57,6 +63,8 @@ public class IndexFragment extends BaseFragment  {
         viewPager = (ViewPager) view.findViewById(R.id.index_viewpager);
         indexFragmentAdapter = new IndexFragmentAdapter(getActivity().getSupportFragmentManager(),false);
         viewPager.setAdapter(indexFragmentAdapter);
+
+
 
         tabLayout.setupWithViewPager(viewPager);
         setWhiteMode();
@@ -70,17 +78,22 @@ public class IndexFragment extends BaseFragment  {
             public void onClick(View v) {
 
 //            TabLayout.Tab tab =  tabLayout.newTab();
-//
+////
 //            tab.setText("添加");
 //                Fragment fragment =  new ShipinFragment();
 //                tab.setCustomView(fragment.getView());
-//
+////
 //            tabLayout.addTab(tab,IndexFragmentAdapter.TITLE.length);
 //
 //                System.out.println("fragment = " + IndexFragmentAdapter.TITLE.length);
-                indexFragmentAdapter = new IndexFragmentAdapter(getActivity().getSupportFragmentManager(),true);
-                viewPager.setAdapter(indexFragmentAdapter);
-                tabLayout.setupWithViewPager(viewPager);
+
+
+//
+//                indexFragmentAdapter = new IndexFragmentAdapter(getActivity().getSupportFragmentManager(),true);
+//                viewPager.setAdapter(indexFragmentAdapter);
+//                tabLayout.setupWithViewPager(viewPager);
+
+
 
             }
         });

@@ -9,6 +9,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.bwei.todaynews.R;
 
@@ -41,6 +42,7 @@ public class CustomProgressBar extends ProgressBar {
 
     public CustomProgressBar(Context context, AttributeSet attrs) {
         this(context, attrs,0);
+        Toast.makeText(context, ""+context, Toast.LENGTH_SHORT).show();
     }
 
     public CustomProgressBar(Context context, AttributeSet attrs, int defStyleAttr) {

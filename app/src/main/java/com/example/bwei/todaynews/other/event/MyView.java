@@ -38,10 +38,10 @@ public class MyView extends View {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         System.out.println("MyView ev = onTouchEvent " );
-//        getParent().requestDisallowInterceptTouchEvent(false);
-        return super.onTouchEvent(event);
-//        return false ;
-//        return true;
+        getParent().requestDisallowInterceptTouchEvent(true);
+//        return super.onTouchEvent(event);
+        return true ;
+//        return false;
     }
 
 
