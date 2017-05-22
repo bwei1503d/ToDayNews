@@ -24,33 +24,33 @@ public class ZoomActivity extends Activity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zoom);
 
-//        imageView = (ImageView) findViewById(R.id.zoomimageview);
+        imageView = (ImageView) findViewById(R.id.zoomimageview);
 
-//        gestureDetector1 = new GestureDetector(this,new GestureDetector.SimpleOnGestureListener(){
-//            @Override
-//            public boolean onSingleTapConfirmed(MotionEvent e) {
-//                System.out.println("e = onSingleTapConfirmed " + e);
-//                return super.onSingleTapConfirmed(e);
-//            }
-//
-//            @Override
-//            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-//                System.out.println("e = onFling " + e1);
-//                return super.onFling(e1, e2, velocityX, velocityY);
-//            }
-//
-//            @Override
-//            public boolean onDoubleTap(MotionEvent e) {
-//                System.out.println("e = onDoubleTap " + e);
-//                return super.onDoubleTap(e);
-//            }
-//
-//            @Override
-//            public boolean onSingleTapUp(MotionEvent e) {
-//                System.out.println("e = onSingleTapUp " + e);
-//                return super.onSingleTapUp(e);
-//            }
-//        });
+        gestureDetector1 = new GestureDetector(this,new GestureDetector.SimpleOnGestureListener(){
+            @Override
+            public boolean onSingleTapConfirmed(MotionEvent e) {
+                System.out.println("e = onSingleTapConfirmed " + e);
+                return super.onSingleTapConfirmed(e);
+            }
+
+            @Override
+            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+                System.out.println("e = onFling " + e1);
+                return super.onFling(e1, e2, velocityX, velocityY);
+            }
+
+            @Override
+            public boolean onDoubleTap(MotionEvent e) {
+                System.out.println("e = onDoubleTap " + e);
+                return super.onDoubleTap(e);
+            }
+
+            @Override
+            public boolean onSingleTapUp(MotionEvent e) {
+                System.out.println("e = onSingleTapUp " + e);
+                return super.onSingleTapUp(e);
+            }
+        });
 
 
 
